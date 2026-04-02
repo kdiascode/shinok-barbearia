@@ -316,18 +316,190 @@
     100% { opacity: 0;   transform: scale(1.5); }
   }
 
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 201;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE MENU OVERLAY */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.97);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-menu a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 6px;
+    color: var(--white);
+    text-decoration: none;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    width: 70%;
+    text-align: center;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* SERVICE DRAWER */
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 300;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .drawer-overlay.open { opacity: 1; }
+  .service-drawer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-radius: 20px 20px 0 0;
+    padding: 32px 28px 48px;
+    z-index: 301;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .service-drawer.open { transform: translateY(0); }
+  .drawer-handle {
+    width: 40px; height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin: 0 auto 28px;
+  }
+  .drawer-time {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .drawer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .drawer-desc {
+    font-size: 14px; color: var(--gray);
+    line-height: 1.7; margin-bottom: 24px;
+  }
+  .drawer-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; color: var(--gold);
+    margin-bottom: 28px;
+  }
+  .drawer-price span {
+    font-size: 18px; color: var(--gray);
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .drawer-btn {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    background: var(--gold); color: var(--black); text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    padding: 18px 32px; width: 100%;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: background 0.2s;
+    border: none; cursor: pointer;
+  }
+  .drawer-btn:hover { background: var(--gold-light); }
+
+  /* MOBILE STICKY BAR */
+  .mobile-sticky-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #0e0e0e;
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    z-index: 150;
+    gap: 10px;
+  }
+  .sticky-btn {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px 10px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .sticky-btn-wpp {
+    background: #25d366;
+    color: #000;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+  .sticky-btn-wpp svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+  .sticky-btn-services {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+  }
+
+  /* SERVICE CARD CLICKABLE */
+  .service-card {
+    cursor: pointer;
+  }
+  .service-card .card-hint {
+    display: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    margin-top: 12px;
+  }
+
   /* MOBILE */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
     .hero { padding: 0 20px; }
     .pole-deco, .hero-logo-deco { display: none; }
     .sobre { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
     .sobre-text h2 { font-size: 48px; }
-    .servicos { padding: 60px 20px; }
+    .servicos { padding: 60px 20px 100px; }
     .section-header h2 { font-size: 52px; }
-    .cta-section { padding: 80px 20px; }
-    footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+    .cta-section { padding: 80px 20px 120px; }
+    footer { padding: 32px 20px 100px; flex-direction: column; text-align: center; }
+    .mobile-sticky-bar { display: flex; }
+    .service-card .card-hint { display: block; }
+    .whatsapp-float { display: none; }
   }
 </style>
 </head>
@@ -390,7 +562,17 @@
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#agendar">Agendar</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" class="mobile-nav-link">Sobre</a>
+  <a href="#servicos" class="mobile-nav-link">Serviços</a>
+  <a href="#agendar" class="mobile-nav-link">Agendar</a>
+</div>
 
 <!-- ══ HERO ══ -->
 <section class="hero">
@@ -467,77 +649,89 @@
     <h2>SERVIÇOS</h2>
   </div>
   <div class="services-grid">
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Corte de Cabelo Adulto" data-time="⏱ 30 min" data-price="R$35" data-desc="Renove seu visual com um corte feito com precisão e estilo. Nossos barbeiros utilizam técnicas modernas para criar o corte ideal para o seu rosto e estilo de vida.">
       <div class="service-time">⏱ 30 min</div>
       <h3>Corte de Cabelo Adulto</h3>
       <p class="service-desc">Renove seu visual com um corte feito com precisão e estilo.</p>
       <div class="service-price">R$35</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Corte de Cabelo Infantil" data-time="⏱ 30 min" data-price="R$35" data-desc="Transforme o visual dos pequenos com um corte cheio de personalidade. Ambiente acolhedor e adaptado para crianças se sentirem confortáveis.">
       <div class="service-time">⏱ 30 min</div>
       <h3>Corte de Cabelo Infantil</h3>
       <p class="service-desc">Transforme o visual dos pequenos com um corte cheio de personalidade.</p>
       <div class="service-price">R$35</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Barba" data-time="⏱ 20 min" data-price="R$35" data-desc="Valorize seu visual com um cuidado especial para a barba. Modelagem, acabamento e hidratação para uma barba impecável.">
       <div class="service-time">⏱ 20 min</div>
       <h3>Barba</h3>
       <p class="service-desc">Valorize seu visual com um cuidado especial para a barba.</p>
       <div class="service-price">R$35</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Cabelo e Barba" data-time="⏱ 50 min" data-price="R$60" data-desc="Transforme seu visual completo com o combo perfeito. Corte de cabelo + barba com o melhor custo-benefício da região.">
       <div class="service-time">⏱ 50 min</div>
       <h3>Cabelo e Barba</h3>
       <p class="service-desc">Transforme seu visual completo com o combo perfeito.</p>
       <div class="service-price">R$60</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Acabamento (Pezinho)" data-time="⏱ 10 min" data-price="R$15" data-desc="Realce o contorno do seu corte com um acabamento preciso. Ideal para manter o visual entre cortes completos.">
       <div class="service-time">⏱ 10 min</div>
       <h3>Acabamento (Pezinho)</h3>
       <p class="service-desc">Realce o contorno do seu corte com um acabamento preciso.</p>
       <div class="service-price">R$15</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Pigmentação" data-time="⏱ 15 min" data-price="R$30" data-desc="Recupere a aparência natural dos fios com uma solução moderna. Produto de qualidade para um resultado natural e duradouro.">
       <div class="service-time">⏱ 15 min</div>
       <h3>Pigmentação</h3>
       <p class="service-desc">Recupere a aparência natural dos fios com uma solução moderna.</p>
       <div class="service-price">R$30</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Relaxamento" data-time="⏱ 20 min" data-price="R$25" data-price-suffix=" a partir de" data-desc="Fios mais alinhados e fáceis de cuidar. Tratamento que reduz o volume e facilita a manutenção do cabelo no dia a dia.">
       <div class="service-time">⏱ 20 min</div>
       <h3>Relaxamento</h3>
       <p class="service-desc">Fios mais alinhados e fáceis de cuidar são possíveis.</p>
       <div class="service-price">R$25 <span>a partir de</span></div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Platinado" data-time="⏱ 30 min" data-price="R$120" data-price-suffix=" a partir de" data-desc="Transforme seu visual com um cabelo platinado e marcante. Técnica profissional com produtos de alta qualidade para um resultado deslumbrante.">
       <div class="service-time">⏱ 30 min</div>
       <h3>Platinado</h3>
       <p class="service-desc">Transforme seu visual com um cabelo platinado e marcante.</p>
       <div class="service-price">R$120 <span>a partir de</span></div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Luzes" data-time="⏱ 30 min" data-price="R$70" data-price-suffix=" a partir de" data-desc="Realce seu visual com fios iluminados e cheios de vida. Técnica personalizada para cada tipo e cor de cabelo.">
       <div class="service-time">⏱ 30 min</div>
       <h3>Luzes</h3>
       <p class="service-desc">Realce seu visual com fios iluminados e cheios de vida.</p>
       <div class="service-price">R$70 <span>a partir de</span></div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Sobrancelha com Navalha" data-time="⏱ 5 min" data-price="R$10" data-desc="Valorize seu olhar com um acabamento preciso e natural. Técnica com navalha para um design limpo e definido.">
       <div class="service-time">⏱ 5 min</div>
       <h3>Sobrancelha com Navalha</h3>
       <p class="service-desc">Valorize seu olhar com um acabamento preciso e natural.</p>
       <div class="service-price">R$10</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Depilação Ouvido com Cera" data-time="⏱ 5 min" data-price="R$15" data-desc="Cuidado e higiene com resultado impecável. Remoção dos pelos com cera quente para um acabamento limpo e duradouro.">
       <div class="service-time">⏱ 5 min</div>
       <h3>Depilação Ouvido com Cera</h3>
       <p class="service-desc">Cuidado e higiene com resultado impecável.</p>
       <div class="service-price">R$15</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" data-service="Depilação Nariz com Cera" data-time="⏱ 10 min" data-price="R$15" data-desc="Limpeza precisa para um visual mais refinado. Remoção eficaz e segura dos pelos indesejados com cera especializada.">
       <div class="service-time">⏱ 10 min</div>
       <h3>Depilação Nariz com Cera</h3>
       <p class="service-desc">Limpeza precisa para um visual mais refinado.</p>
       <div class="service-price">R$15</div>
+      <p class="card-hint">Toque para agendar →</p>
     </div>
   </div>
 </section>
@@ -556,7 +750,33 @@
   </a>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- SERVICE DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="service-drawer" id="serviceDrawer">
+  <div class="drawer-handle"></div>
+  <div class="drawer-time" id="drawerTime"></div>
+  <div class="drawer-title" id="drawerTitle"></div>
+  <div class="drawer-desc" id="drawerDesc"></div>
+  <div class="drawer-price" id="drawerPrice"></div>
+  <a href="#" class="drawer-btn" id="drawerBtn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;flex-shrink:0">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    Agendar este serviço
+  </a>
+</div>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-sticky-bar">
+  <a href="https://wa.me/5531973113975?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20horário."
+     class="sticky-btn sticky-btn-wpp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Agendar
+  </a>
+  <a href="#servicos" class="sticky-btn sticky-btn-services">Ver Serviços</a>
+</div>
+
+<!-- footer -->
 <footer>
   <div class="footer-logo-wrap">
     <svg class="footer-logo-svg" viewBox="0 0 200 200" fill="#c9a84c" aria-label="Shinok logo">
@@ -583,10 +803,82 @@
 </a>
 
 <script>
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Service drawer
+  const overlay = document.getElementById('drawerOverlay');
+  const drawer = document.getElementById('serviceDrawer');
+  const drawerTime = document.getElementById('drawerTime');
+  const drawerTitle = document.getElementById('drawerTitle');
+  const drawerDesc = document.getElementById('drawerDesc');
+  const drawerPrice = document.getElementById('drawerPrice');
+  const drawerBtn = document.getElementById('drawerBtn');
+
+  function openDrawer(card) {
+    const name = card.dataset.service;
+    const time = card.dataset.time;
+    const price = card.dataset.price;
+    const suffix = card.dataset.priceSuffix || '';
+    const desc = card.dataset.desc;
+    drawerTime.textContent = time;
+    drawerTitle.textContent = name;
+    drawerDesc.textContent = desc;
+    drawerPrice.innerHTML = price + (suffix ? `<span>${suffix}</span>` : '');
+    const msg = encodeURIComponent(`Olá! Vim pelo site e gostaria de agendar um horário para: *${name}* (${price}${suffix}). Poderia me informar a disponibilidade?`);
+    drawerBtn.href = `https://wa.me/5531973113975?text=${msg}`;
+    overlay.style.display = 'block';
+    drawer.style.display = 'block';
+    requestAnimationFrame(() => {
+      overlay.classList.add('open');
+      drawer.classList.add('open');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    overlay.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      drawer.style.display = 'none';
+    }, 400);
+  }
+
+  overlay.style.display = 'none';
+  drawer.style.display = 'none';
+
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => openDrawer(card));
+  });
+  overlay.addEventListener('click', closeDrawer);
+
+  // Swipe down to close drawer
+  let touchStartY = 0;
+  drawer.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+  drawer.addEventListener('touchend', e => {
+    if (e.changedTouches[0].clientY - touchStartY > 80) closeDrawer();
+  }, { passive: true });
 </script>
 </body>
 </html>
